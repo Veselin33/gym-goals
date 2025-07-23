@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('../images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #464242;
+  padding: 12px 20px;
+  display: flex;
+}
+
+.left-nav-group a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.left-nav-group a i {
+    margin-right: 8px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateY(10px);
+    opacity: 0;
+}
+
+.left-nav-group a:hover i {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+
+.right-nav-group {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.left-nav-group a,
+.right-nav-group a,
+.right-nav-group span {
+  color: white;
+  text-decoration: none;
+  margin-right: 15px;
+  font-weight: bold;
+}
+
+.left-nav-group a:last-child,
+.right-nav-group a:last-child {
+  margin-right: 0;
+}
+
+.credentials-form {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #464242;
+  border-radius: 10px;
+  color: white;
+}
+
+.credentials-form input,
+.credentials-form select,
+.credentials-form button {
+  width: 100%;
+  margin: 8px 0;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  box-sizing: border-box;
+}
+
+.credentials-form button {
+  background: white;
+  color: #464242;
+  font-weight: bold;
+  cursor: pointer;
+}
