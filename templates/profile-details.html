@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Body Measurements  {% endblock %}
+
+{% block content %}
+  <div class="profile-data-form">
+    <h3>Track your BMI by entering your weight and height.</h3>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Profile</button>
+</form>
+
+  </div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="profile-info">
+        <h1>Profile Information</h1>
+
+        <p><strong>Username:</strong> {{ profile.user.username }}</p>
+        <p><strong>Weight:</strong> {{ profile.weight_kg }} kg</p>
+        <p><strong>Height:</strong> {{ profile.height_cm }} cm</p>
+        <p><strong>Goal:</strong> {{ profile.get_goal_display }}</p>
+        <p><strong>Target Weight:</strong> {{ profile.target_weight_kg }} kg</p>
+
+        {% if profile.profile_image %}
+            <p><strong>Profile Image:</strong><br>
+                <img src="{{ profile.profile_image.url }}" alt="Profile Image" width="200">
+            </p>
+        {% endif %}
+
+        <hr>
+        <p><strong>Your Body Mass Index (BMI) is: </strong> {{ bmi }}</p>
+        <table class="bmi-table">
+            <thead>
+            <tr>
+                <th>BMI Category</th>
+                <th>BMI Range</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Underweight</td>
+                <td>Below 18.5</td>
+            </tr>
+            <tr>
+                <td>Healthy</td>
+                <td>18.5 – 24.9</td>
+            </tr>
+            <tr>
+                <td>Overweight</td>
+                <td>25.0 – 29.9</td>
+            </tr>
+            <tr>
+                <td>Obesity</td>
+                <td>30.0 or above</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

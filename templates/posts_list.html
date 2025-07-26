@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}All posts{% endblock %}
+
+{% block content %}
+
+    <div class="posts-list">
+        <h2>Recent Posts</h2>
+        {% for post in post_list %}
+            <div class="post">
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.content|linebreaks }}</p>
+                <p class="author">Posted by {{ post.author.username }}</p>
+            </div>
+        {% empty %}
+            <p>Looks like no one has shared a post yet...</p>
+        {% endfor %}
+    </div>
+
+    <div class="post-add">
+        <a href="{% url 'add-post' %}">Add Post</a>
+    </div>
+
+{% endblock %}

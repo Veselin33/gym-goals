@@ -14,7 +14,7 @@
 <nav>
     <div class="left-nav-group">
         <a href="{% url 'home' %}">
-            <i class="fa-solid fa-dumbbell"></i> GymGoals
+            <i class="fa-solid fa-dumbbell"></i> Fit Track
         </a>
     </div>
 
@@ -22,13 +22,19 @@
     <div class="right-nav-group">
         {% if user.is_authenticated %}
             <span>Hello, {{ user.username }}</span>
-            <a href="">Logout</a>
-            <a href="">Profile</a>
-            <a href="">Workouts</a>
-            <a href="">Calories</a>
-            <a href="">Goals</a>
-            <a href="">SleepLog</a>
+            <div class="dropdown">
+                <a href="#" class="dropbtn">Profile</a>
+                <div class="dropdown-content">
+                    <a href="{% url 'profile-info' %}">My Profile</a>
+                    <a href="{% url 'body-metrics' %}">Body Metrics</a>
+                    <a href="{% url 'add_workout' %}">Workouts</a>
+                    <a href="{% url 'post-list' %}">Posts</a>
+                    <a href="">SleepLog</a>
+                    <a href="{% url 'logout' %}">Logout</a>
+                </div>
+            </div>
         {% else %}
+            <a class="bmi-link" href="{% url 'bmi' %}">BMI</a>
             <a href="{% url 'login' %}">Login</a>
             <a href="{% url 'register' %}">Register</a>
         {% endif %}
@@ -40,6 +46,7 @@
 <div class="main-container">
     {% block content %}
     {% endblock %}
+
 </div>
 
 </body>
