@@ -13,7 +13,6 @@ class PostCreateView(LoginRequiredMixin ,CreateView):
     form_class = PostForm
     template_name = 'add-post.html'
     success_url = reverse_lazy('post-list')
-    ordering = ('-created',)
 
     def form_valid(self, form):
         post = form.save(commit=False)
@@ -24,3 +23,4 @@ class PostCreateView(LoginRequiredMixin ,CreateView):
 class PostListView(ListView):
     model = Post
     template_name = 'posts_list.html'
+    ordering = ['-created_at']

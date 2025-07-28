@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
@@ -42,5 +42,5 @@ def profile_information(request):
     profile = request.user.profile
     bmi = profile.bmi
 
-    return render(request, 'profile-information.html', {'profile': profile, 'bmi': bmi})
+    return render(request, 'profile-update.html', {'profile': profile, 'bmi': bmi})
 

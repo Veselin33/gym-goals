@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Calories Result{% endblock %}
+
+{% block content %}
+    <div class="description">
+
+        <h3>How We Calculate Your Daily Calorie Needs</h3>
+        <p>Our calorie calculator uses the Mifflin-St Jeor Equation,
+            one of the most accurate formulas developed by health professionals
+            to estimate your Basal Metabolic Rate (BMR) — the number of calories your body burns at rest</p>
+
+
+    </div>
+
+
+
+
+  <div class="result-container">
+    <h1>Calories Calculation Result</h1>
+    <p>Your estimated daily calories needs:</p>
+    <p><strong class="calories-number">{{ calories_obj.calories|floatformat:2 }} kcal</strong></p>
+
+    <div class="table-container">
+      <table class="result-table">
+        <tr>
+          <th>Age</th>
+          <td>{{ calories_obj.age }}</td>
+        </tr>
+        <tr>
+          <th>Gender</th>
+          <td>{{ calories_obj.get_gender_display }}</td>
+        </tr>
+        <tr>
+          <th>Activity Level</th>
+          <td>{{ calories_obj.get_activity_display }}</td>
+        </tr>
+      </table>
+    </div>
+
+    <a href="{% url 'calories' %}" class="re-button">Calculate Again</a>
+  </div>
+{% endblock %}

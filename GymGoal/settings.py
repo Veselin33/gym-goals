@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'accounts',
     'posts',
     'common',
-    'sleeplog',
+    'calories',
     'workouts'
 ]
 

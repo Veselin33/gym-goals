@@ -18,7 +18,6 @@ class Profile(models.Model):
 
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True)
 
-
     weight_kg = models.DecimalField(max_digits=5, decimal_places=2, validators=[min_weight_validator], blank=True, null=True)
     height_cm = models.PositiveIntegerField(validators=[min_height_validator], blank=True, null=True)
     goal = models.CharField(max_length=10, choices=GOAL_CHOICES, null=True, blank=True)
