@@ -1,0 +1,21 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+
+    <div class="credentials-form">
+            <h2>Congratulations!</h2>
+            <p><strong>Training:</strong> {{ workout.workout_type }}</p>
+            <p><strong>Duration:</strong> {{ workout.duration }} minutes</p>
+            <p><strong>Calories Burned:</strong> {{ workout.calories }} kcal</p>
+
+            <div style="margin-top: 20px;">
+                <a href="{% url 'add_workout' %}">
+                    <button>Add Another Workout</button>
+                </a>
+                <a href="{% url 'home' %}">
+                    <button>Go Rest</button>
+                </a>
+            </div>
+
+    </div>
+{% endblock %}

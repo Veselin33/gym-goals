@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'common/base.html' %}
 
 {% load static %}
 
@@ -6,20 +6,20 @@
     <div class="profile-info">
         <h1>Profile Information</h1>
 
-        <p><strong>Username:</strong> {{ profile.user.username }}</p>
-        <p><strong>Weight:</strong> {{ profile.weight_kg }} kg</p>
-        <p><strong>Height:</strong> {{ profile.height_cm }} cm</p>
-        <p><strong>Goal:</strong> {{ profile.get_goal_display }}</p>
-        <p><strong>Target Weight:</strong> {{ profile.target_weight_kg }} kg</p>
+        <p><strong>Username:</strong> {{ user_profile.user.username }}</p>
+        <p><strong>Weight:</strong> {{ user_profile.weight_kg }} kg</p>
+        <p><strong>Height:</strong> {{ user_profile.height_cm }} cm</p>
+        <p><strong>Goal:</strong> {{ user_profile.get_goal_display }}</p>
+        <p><strong>Target Weight:</strong> {{ user_profile.target_weight_kg }} kg</p>
 
-        {% if profile.profile_image %}
+        {% if user_profile.profile_image %}
             <p><strong>Profile Image:</strong><br>
-                <img src="{{ profile.profile_image.url }}" alt="Profile Image" width="200">
+                <img src="{{ user_profile.profile_image.url }}" alt="Profile Image" width="200">
             </p>
         {% endif %}
 
         <hr>
-        <p><strong>Your Body Mass Index (BMI) is: </strong> {{ bmi }}</p>
+        <p><strong>Your Body Mass Index (BMI) is: </strong>{{ bmi }}</p>
         <table class="bmi-table">
             <thead>
             <tr>
@@ -46,6 +46,6 @@
             </tr>
             </tbody>
         </table>
-        <a class="update-profile" href="{% url 'body-metrics' %}"> Update Profile</a>
+        <a class="update-profile" href="{% url 'profile-edit' %}"> Update Profile</a>
     </div>
 {% endblock %}

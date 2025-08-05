@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'common/base.html' %}
 
 
 {% block title %}Calculate Calories{% endblock %}
@@ -9,12 +9,12 @@
         <h3>How We Calculate Your Daily Calorie Needs</h3>
         <p>Our calorie calculator uses the Mifflin-St Jeor Equation,
             one of the most accurate formulas developed by health professionals
-            to estimate your Basal Metabolic Rate (BMR) — the number of calories your body burns at <span>rest</span></p>
+            to estimate your <span>Basal Metabolic Rate (BMR)</span> — the number of calories your body burns at <span>rest.</span></p>
 
         <p>It's estimated using equations that consider factors like age, gender, height, and weight.</p>
 
 
-        <p> <span>Total Daily Energy Expenditure (TDEE)</span> , is calculated by first determining your Basal Metabolic Rate (BMR)
+        <p> <span>Total Daily Energy Expenditure (TDEE)</span> , is calculated by first determining your <span>Basal Metabolic Rate (BMR)</span>
             and then multiplying that value by an activity factor</p>
     </div>
 
@@ -30,9 +30,11 @@
         {% endif %}
 
         {% if incomplete_profile %}
+
+            <h3>Please provide your body metrics first</h3>
             <div class="alert alert-warning">
-                Please provide your body metrics first.
-                <a href="{% url 'profile-info' %}" class="btn btn-primary" role="button">Go to Profile Metrics</a>
+                 (Weight & Height are required for this future).
+                <a href="{% url 'profile-edit' %}" class="btn btn-primary" role="button">Go to Profile Metrics</a>
             </div>
         {% endif %}
 

@@ -1,7 +1,5 @@
 from django.urls import path
-
-from workouts.forms import WorkoutSuccessView
-from workouts.views import WorkoutCreateView
+from workouts.views import WorkoutCreateView, WorkoutSuccessView
 
 urlpatterns = [
     path('add-workout', WorkoutCreateView.as_view(), name='add_workout'),

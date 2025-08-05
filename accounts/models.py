@@ -9,6 +9,8 @@ class CustomUser(AbstractUser):
     is_active = models.BooleanField(default=True)
 
 
+
+
 class Profile(models.Model):
     GOAL_CHOICES = [
         ('cut', 'Cut (Lose Weight)'),
@@ -28,7 +30,7 @@ class Profile(models.Model):
         if self.height_cm and self.weight_kg:
             height_m = self.height_cm / 100
             return round(float(self.weight_kg) / (height_m ** 2), 2)
-        return None
+        return '(BMI) requires Height And Weight.'
 
     def __str__(self):
         return self.user.username

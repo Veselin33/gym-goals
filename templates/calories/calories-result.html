@@ -1,0 +1,120 @@
+{% extends 'common/base.html' %}
+
+{% block title %}Calories Result{% endblock %}
+
+{% block content %}
+
+    <div class="description">
+        <h2>How We Calculate Your Daily Calorie Needs</h2>
+        <p>Our calorie calculator uses the Mifflin-St Jeor Equation,
+            one of the most accurate formulas developed by health professionals
+            to estimate your <span>Basal Metabolic Rate (BMR)</span> — the number of calories your body burns at <span>rest.</span>
+        </p>
+
+        <p>It's estimated using equations that consider factors like age, gender, height, and weight.</p>
+
+
+        <p><span>Total Daily Energy Expenditure (TDEE)</span> , is calculated by first determining your <span>Basal Metabolic Rate (BMR)</span>
+            and then multiplying that value by an activity factor</p>
+    </div>
+
+
+
+    <div class="result-info">
+
+        <div class="result-container">
+            <h1>Calories Calculation Result</h1>
+            <p>Your estimated daily calories needs:</p>
+            <p><strong class="calories-number">{{ calories_obj.calories|floatformat:2 }} kcal</strong></p>
+
+            <div class="table-container">
+                <table class="result-table">
+                    <tr>
+                        <th>Age</th>
+                        <td>{{ calories_obj.age }}</td>
+                    </tr>
+                    <tr>
+                        <th>Gender</th>
+                        <td>{{ calories_obj.get_gender_display }}</td>
+                    </tr>
+                    <tr>
+                        <th>Activity Level</th>
+                        <td>{{ calories_obj.get_activity_display }}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <a href="{% url 'calories' %}" class="re-button">Calculate Again</a>
+        </div>
+
+
+        {% if not calories_obj.activity == 'BMR' %}
+        <div class="result-container">
+
+        
+
+            <h2>{% if profile_goal %} Based on your choice to {{ profile_goal }} weight {% else %} Go to profile and set your goal to see your full potential{% endif %} </h2>
+            {% if profile_goal == 'cut' %}
+
+                <table class="result-table">
+                    <tr>
+                        <th>Maintain weight</th>
+                        <td>{{ calories_obj.calories|floatformat:0 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Mild weight loss (0.25 kg/week)</th>
+
+                        <td>{{ calories_obj.calories|floatformat:0|add:"-250" }}</td>
+                    </tr>
+                    <tr>
+                        <th>Weight loss (0.5 kg/week)</th>
+
+                        <td>{{ calories_obj.calories|floatformat:0|add:"-500" }}</td>
+                    </tr>
+                    <tr>
+                        <th>Extreme weight loss (1 kg/week)</th>
+                        <td>{{ calories_obj.calories|floatformat:0|add:"-1000" }}</td>
+                    </tr>
+                </table>
+
+                <h4>Important: Be careful consuming under 1500cal/day might be a risk for your health.</h4>
+
+            {% elif profile_goal == 'gain' %}
+
+                <table class="result-table">
+                    <tr>
+                        <th>Maintain weight</th>
+                        <td>{{ calories_obj.calories|floatformat:0 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Mild weight gain (0.25 kg/week)</th>
+
+                        <td>{{ calories_obj.calories|floatformat:0|add:"+250" }}</td>
+                    </tr>
+                    <tr>
+                        <th>Weight gain (0.5 kg/week)</th>
+
+                        <td>{{ calories_obj.calories|floatformat:0|add:"+500" }}</td>
+                    </tr>
+                    <tr>
+                        <th>Extreme weight gain (1 kg/week)</th>
+                        <td>{{ calories_obj.calories|floatformat:0|add:"+1000" }}</td>
+                    </tr>
+                </table>
+
+            {% else  %}
+
+                <table class="result-table">
+                    <tr>
+                        <th>Maintain weight</th>
+                        <td>{{ calories_obj.calories|floatformat:0 }}</td>
+                    </tr>
+                </table>
+                <h4>You should eat around {{ calories_obj.calories|floatformat:0 }} calories per day.</h4>
+
+
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}

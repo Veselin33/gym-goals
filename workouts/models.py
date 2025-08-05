@@ -1,5 +1,8 @@
-from decimal import Decimal
+
 from django.db import models
+
+from accounts.models import CustomUser
+
 
 class Workout(models.Model):
     WORKOUT_TYPES = [
@@ -23,7 +26,10 @@ class Workout(models.Model):
         }
         met = met_values.get(self.workout_type, 5.0)
 
-        weight = float(user_weight_kg) if isinstance(user_weight_kg, Decimal) else user_weight_kg
+        weight = float(user_weight_kg)
 
         calories = met * weight * (self.duration_minutes / 60)
         return round(calories)
+
+    def __str__(self):
+        return f'{self.workout_type} for {self.duration_minutes} min'

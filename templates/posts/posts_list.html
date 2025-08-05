@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'common/base.html' %}
 
 {% block title %}All posts{% endblock %}
 
@@ -14,9 +14,12 @@
 
             <div class="post">
                 <h3>{{ post.title }}</h3>
-                <p>{{ post.content|linebreaks }}</p>
-                <p class="author">Posted by {{ post.author.username }}</p>
-                <p class="created">Created at: {{ post.created_at }}</p>
+                <p>{{ post.content }}</p>
+                <span class="author">Posted by {{ post.author.username }}</span>
+                <span class="created">Created at: {{ post.created_at }}</span>
+                {% if perms.posts.delete_post %}
+                    <a href="{% url 'delete-post' post.pk %}" class="delete-btn">Delete</a>
+                {% endif %}
 
             </div>
         {% empty %}

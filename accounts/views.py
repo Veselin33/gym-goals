@@ -12,13 +12,13 @@ from accounts.models import CustomUser, Profile
 class UserRegisterView(CreateView):
     model = CustomUser
     form_class = CustomUserCreationForm
-    template_name = 'register.html'
+    template_name = 'accounts/register.html'
     success_url = reverse_lazy('login')
 
 
 class CustomLoginView(LoginView):
     form_class = LoginForm
-    template_name = 'login.html'
+    template_name = 'accounts/login.html'
     success_url = reverse_lazy('home')
 
 
@@ -28,19 +28,18 @@ def logout_view(request):
     return redirect('login')
 
 
-class ProfileDetails(LoginRequiredMixin,UpdateView):
+class EditProfileDetails(LoginRequiredMixin,UpdateView):
     model = Profile
     form_class = ProfileForm
-    template_name = 'profile-details.html'
-    success_url = reverse_lazy('profile-info')
+    template_name = 'profiles/profile-edit.html'
+    success_url = reverse_lazy('profile-detail')
 
     def get_object(self, queryset=None):
         return self.request.user.profile
 
 
 def profile_information(request):
-    profile = request.user.profile
-    bmi = profile.bmi
+    user_profile = request.user.profile
+    bmi = user_profile.bmi
 
-    return render(request, 'profile-update.html', {'profile': profile, 'bmi': bmi})
-
+    return render(request, 'profiles/profile-detail.html', {'user_profile': user_profile, 'bmi': bmi})

@@ -1,0 +1,83 @@
+{% extends 'common/base.html' %}
+
+{% block title %}BMI{% endblock %}
+
+{% block content %}
+    {% if not user_profile %}
+        <div class="home-bmi-info">
+
+            <h2>Welcome to Your BMI Tracker</h2>
+            <p>
+                To calculate your BMI and unlock personalized health goal features, please
+                <a href="{% url 'login' %}">Log In</a> or
+                <a href="{% url 'register' %}">Register</a>.
+            </p>
+
+            <h3>BMI Category Reference</h3>
+            <table class="bmi-table">
+                <thead>
+                <tr>
+                    <th>BMI Category</th>
+                    <th>BMI Range</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Underweight</td>
+                    <td>Below 18.5</td>
+                </tr>
+                <tr>
+                    <td>Healthy</td>
+                    <td>18.5 – 24.9</td>
+                </tr>
+                <tr>
+                    <td>Overweight</td>
+                    <td>25.0 – 29.9</td>
+                </tr>
+                <tr>
+                    <td>Obesity</td>
+                    <td>30.0 or above</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    {% else %}
+
+        <div class="profile-info">
+            <h2>Welcome, {{ user.username }}!</h2>
+
+            <hr>
+            <p><strong>Your Body Mass Index (BMI) is: </strong>{{ user_profile.bmi }}</p>
+            <table class="bmi-table">
+                <thead>
+                <tr>
+                    <th>BMI Category</th>
+                    <th>BMI Range</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Underweight</td>
+                    <td>Below 18.5</td>
+                </tr>
+                <tr>
+                    <td>Healthy</td>
+                    <td>18.5 – 24.9</td>
+                </tr>
+                <tr>
+                    <td>Overweight</td>
+                    <td>25.0 – 29.9</td>
+                </tr>
+                <tr>
+                    <td>Obesity</td>
+                    <td>30.0 or above</td>
+                </tr>
+                </tbody>
+            </table>
+            <h3><i class="fa-solid fa-calculator"></i> Recalculate by Updating Height & Weight </h3>
+            <a class="update-profile" href="{% url 'profile-edit' %}">  Update Profile</a>
+        </div>
+    {% endif %}
+
+{% endblock %}

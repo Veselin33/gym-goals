@@ -23,10 +23,10 @@
         {% if user.is_authenticated %}
             <span>Hello, {{ user.username }}</span>
             <div class="dropdown">
-                <a href="#" class="dropbtn">Profile</a>
+                <a href="#" class="dropbtn">Profile  <i class="fa-solid fa-arrow-down"></i></a>
                 <div class="dropdown-content">
-                    <a href="{% url 'profile-info' %}">My Profile</a>
-                    <a href="{% url 'body-metrics' %}">Body Metrics</a>
+                    <a href="{% url 'profile-detail' %}">My Profile</a>
+                    <a href="{% url 'profile-edit' %}">Body Metrics</a>
                     <a href="{% url 'add_workout' %}">Workouts</a>
                     <a href="{% url 'post-list' %}">Posts</a>
                     <a href="{% url 'calories' %}">Calories</a>
@@ -41,6 +41,14 @@
     </div>
 
 </nav>
+
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <a class="no-perm-msg">{{ message }}</a>
+        {% endfor %}
+    </ul>
+{% endif %}
 
 
 <div class="main-container">
