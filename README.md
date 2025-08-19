@@ -24,7 +24,6 @@ This project was developed and defended in front of lecturers as part of my educ
 - Django
 - HTML, CSS,
 - PostgreSQL
-- 
 ## Bonuses
 
 - Units + Intergration Tests
