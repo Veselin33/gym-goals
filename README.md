@@ -27,7 +27,7 @@ This project was developed and defended in front of lecturers as part of my educ
 ## Bonuses
 
 - Units + Intergration Tests
-
+## Instructions
 --- Setup Instructions ---
 
    1. Clone the repository:
@@ -44,7 +44,7 @@ This project was developed and defended in front of lecturers as part of my educ
 
 5. python manage.py migrate
 
-6. pythin manage.py runserver
+6. python manage.py runserver
 
 7. Open browser at http://127.0.0.1:8000/
 
