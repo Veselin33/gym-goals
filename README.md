@@ -34,11 +34,10 @@ This project was developed and defended in front of lecturers as part of my educ
     '''bash
     git clone https://github.com/Veselin33/gym-goals.git
 
-2. .venv\Scripts\activate
-
-3.
-- python -m venv .venv - Windows 
-- source .venv/bin/activate - MacOS/Linux
+2. Activate venv
+ python -m venv .venv
+   - .venv\Scripts\activate - Windows 
+   - source .venv/bin/activate - MacOS/Linux
 
 4. pip install -r requirements.txt
 
