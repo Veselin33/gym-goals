@@ -4,7 +4,7 @@ A final academic project developed as part of my Django Web Development course.
 
  ## Description
 
-This project was developed and defended in front of lecturers as part of my education. It showcases a full-stack fitness and nutrition tracking application.
+This project was developed and defended in front of lecturers as part of my education. Fitness and nutrition tracking application.
 
  ## Features
 
